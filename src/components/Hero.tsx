@@ -62,18 +62,6 @@ function Hero() {
     willChange: 'transform, opacity',
   }
 
-  // CTA button 2: slide in from left (delay: 35 frames)
-  const btn2Spring = spring({
-    frame: Math.max(0, frame - 35),
-    fps,
-    config: springConfigs.snappy,
-  })
-  const btn2Style: CSSProperties = {
-    opacity: btn2Spring,
-    transform: `translateX(${interpolate(btn2Spring, [0, 1], [-60, 0])}px)`,
-    willChange: 'transform, opacity',
-  }
-
   return (
     <section className="hero" ref={ref as React.RefObject<HTMLElement>}>
       <div className="container">
