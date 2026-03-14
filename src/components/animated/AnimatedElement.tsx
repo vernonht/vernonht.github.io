@@ -1,4 +1,4 @@
-import { ReactNode, CSSProperties } from 'react'
+import type { ReactNode, CSSProperties, JSX } from 'react'
 import { spring, interpolate } from 'remotion'
 import { useScrollFrame } from '../../hooks/useScrollFrame'
 
