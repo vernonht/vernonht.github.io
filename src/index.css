@@ -53,6 +53,7 @@ body {
   border-bottom: 1px solid var(--color-border);
   z-index: 100;
   transition: background-color 0.3s, border-color 0.3s;
+  width: 100vw;
 }
 
 .header .container {
