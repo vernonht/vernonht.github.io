@@ -96,6 +96,65 @@ body {
   justify-content: center;
 }
 
+.header-mobile-controls {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+}
+
+.hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.hamburger-line.open:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-line.open:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.mobile-nav {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg);
+  border-top: 1px solid var(--color-border);
+  padding: 1rem 0;
+}
+
+.mobile-nav a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  transition: color 0.2s, background 0.2s;
+}
+
+.mobile-nav a:hover {
+  color: var(--color-primary);
+  background: var(--color-border);
+}
+
 /* Hero */
 .hero {
   min-height: 100vh;
@@ -642,7 +701,11 @@ section h2 {
   }
 
   .nav {
-    gap: 1rem;
+    display: none;
+  }
+
+  .header-mobile-controls {
+    display: flex;
   }
 
   .cta-buttons {
