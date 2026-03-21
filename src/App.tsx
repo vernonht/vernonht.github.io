@@ -1,3 +1,6 @@
+import { useEffect } from 'react';
+import { initializeGTM } from './utils/gtm'
+
 import Header from './components/Header'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -8,6 +11,10 @@ import Masonry from './components/Masonry'
 import Footer from './components/Footer'
 
 function App() {
+  useEffect(() => {
+    initializeGTM()
+  }, [])
+
   return (
     <div className="app">
       <Header />
