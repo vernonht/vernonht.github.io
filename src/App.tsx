@@ -1,5 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import AOS from 'aos';
 import { initializeGTM } from './utils/gtm'
+
+// import aos styles
+import 'aos/dist/aos.css';
 
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -11,6 +15,24 @@ import Masonry from './components/Masonry'
 import Footer from './components/Footer'
 
 function App() {
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    // Prevent double initialization in React StrictMode
+    if (initialized.current) return;
+    initialized.current = true;
+
+    // Initialize AOS with options
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: false,
+      offset: 50,
+      disable: false,
+    });
+  }, []);
+
+
   useEffect(() => {
     initializeGTM()
   }, [])

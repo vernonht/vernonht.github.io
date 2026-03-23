@@ -664,33 +664,6 @@ section h2 {
   }
 }
 
-/* Remotion Animation Performance Optimizations */
-.hero h1,
-.hero .subtitle,
-.hero .description,
-.hero .cta-buttons .btn,
-.about h2,
-.about-text p,
-.skills,
-.skill-category h4,
-.skills-list li,
-.projects-section h2,
-.project-card,
-.experience h2,
-.experience-card,
-.highlights li,
-.tech-stack li,
-.masonry-section h2,
-.masonry-subtitle,
-.masonry-card,
-.contact h2,
-.contact-intro,
-.form-group,
-.contact-form .btn {
-  /* Disable CSS transitions on Remotion-animated elements to prevent conflicts */
-  transition: none !important;
-}
-
 /* Responsive */
 @media (max-width: 768px) {
   .hero h1 {
