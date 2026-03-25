@@ -41,11 +41,6 @@ export const figmaConfig = {
       source: 'src/components/Footer.tsx',
       label: 'React',
       description: 'Footer with links and information'
-    },
-    'AnimatedElement': {
-      source: 'src/components/animated/AnimatedElement.tsx',
-      label: 'React',
-      description: 'Scroll-triggered animation wrapper with spring physics'
     }
   },
 

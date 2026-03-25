@@ -16,8 +16,6 @@ A modern, animated portfolio landing page built with React, TypeScript, and Vite
 ```
 src/
 ├── components/
-│   ├── animated/
-│   │   └── AnimatedElement.tsx    # Reusable animated element component
 │   ├── About.tsx                   # About section
 │   ├── Contact.tsx                 # Contact section
 │   ├── Experience.tsx              # Experience/timeline section

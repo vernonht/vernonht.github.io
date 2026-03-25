@@ -1,12 +1,5 @@
-import { CSSProperties, useMemo } from 'react'
-import { spring, interpolate } from 'remotion'
-import { useScrollFrame } from '../hooks/useScrollFrame'
+import { useMemo } from 'react'
 import { calculateYearsOfExperience } from '../utils/helpers'
-
-const springConfigs = {
-  smooth: { damping: 20, stiffness: 50, mass: 1 },
-  snappy: { damping: 15, stiffness: 100 },
-}
 
 type CardVariant = 'accent' | 'outline' | 'filled' | 'default'
 
@@ -118,40 +111,12 @@ const getMasonryItems = (): MasonryItem[] => [
 
 function Masonry() {
   const masonryItems = useMemo(() => getMasonryItems(), [])
-  const { frame, fps, ref } = useScrollFrame({ totalFrames: 180 })
-
-  const titleSpring = spring({
-    frame,
-    fps,
-    config: springConfigs.smooth,
-  })
-  const titleStyle: CSSProperties = {
-    opacity: titleSpring,
-    transform: `translateY(${interpolate(titleSpring, [0, 1], [40, 0])}px)`,
-    willChange: 'transform, opacity',
-  }
-
-  const getCardStyle = (index: number): CSSProperties => {
-    const delay = 10 + index * 5
-
-    const cardSpring = spring({
-      frame: Math.max(0, frame - delay),
-      fps,
-      config: springConfigs.snappy,
-    })
-
-    return {
-      opacity: cardSpring,
-      transform: `scale(${interpolate(cardSpring, [0, 1], [0.92, 1])}) translateY(${interpolate(cardSpring, [0, 1], [20, 0])}px)`,
-      willChange: 'transform, opacity',
-    }
-  }
 
   return (
-    <section id="highlights" className="masonry-section" ref={ref as React.RefObject<HTMLElement>}>
+    <section id="highlights" className="masonry-section">
       <div className="container">
-        <h2 style={titleStyle}>Highlights</h2>
-        <p className="masonry-subtitle" style={titleStyle}>
+        <h2 data-aos="fade-up">Highlights</h2>
+        <p className="masonry-subtitle" data-aos="fade-up" data-aos-delay="100">
           Key achievements and areas of expertise across my career
         </p>
         <div className="masonry-grid">
@@ -159,7 +124,8 @@ function Masonry() {
             <article
               key={item.id}
               className={`masonry-card masonry-card--${item.variant}`}
-              style={getCardStyle(index)}
+              data-aos="fade-up"
+              data-aos-delay={160 + index * 60}
             >
               {item.metric && (
                 <div className="masonry-metric">
@@ -171,8 +137,8 @@ function Masonry() {
               <p>{item.content}</p>
               {item.tags && (
                 <ul className="masonry-tags">
-                  {item.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
+                  {item.tags.map((tag, tagIndex) => (
+                    <li key={tag} data-aos="zoom-in" data-aos-delay={220 + index * 60 + tagIndex * 35}>{tag}</li>
                   ))}
                 </ul>
               )}

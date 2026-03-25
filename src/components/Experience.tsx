@@ -1,12 +1,3 @@
-import { CSSProperties } from 'react'
-import { spring, interpolate } from 'remotion'
-import { useScrollFrame } from '../hooks/useScrollFrame'
-
-const springConfigs = {
-  smooth: { damping: 20, stiffness: 50, mass: 1 },
-  snappy: { damping: 15, stiffness: 100 },
-}
-
 interface ExperienceItem {
   id: number
   title: string
@@ -68,91 +59,37 @@ const experiences: ExperienceItem[] = [
 ]
 
 function Experience() {
-  const { frame, fps, ref } = useScrollFrame({ totalFrames: 150 })
-
-  // Section title: fade up
-  const titleSpring = spring({
-    frame,
-    fps,
-    config: springConfigs.smooth,
-  })
-  const titleStyle: CSSProperties = {
-    opacity: titleSpring,
-    transform: `translateY(${interpolate(titleSpring, [0, 1], [40, 0])}px)`,
-    willChange: 'transform, opacity',
-  }
-
-  // Get style for experience card with stagger (12 frames between cards)
-  const getCardStyle = (cardIndex: number): CSSProperties => {
-    const delay = 15 + cardIndex * 12
-
-    const cardSpring = spring({
-      frame: Math.max(0, frame - delay),
-      fps,
-      config: springConfigs.snappy,
-    })
-
-    return {
-      opacity: cardSpring,
-      transform: `scale(${interpolate(cardSpring, [0, 1], [0.9, 1])}) translateY(${interpolate(cardSpring, [0, 1], [30, 0])}px)`,
-      willChange: 'transform, opacity',
-    }
-  }
-
-  // Get style for highlight items with stagger
-  const getHighlightStyle = (cardIndex: number, highlightIndex: number): CSSProperties => {
-    const cardDelay = 15 + cardIndex * 12
-    const highlightDelay = cardDelay + 10 + highlightIndex * 6
-
-    const highlightSpring = spring({
-      frame: Math.max(0, frame - highlightDelay),
-      fps,
-      config: springConfigs.smooth,
-    })
-
-    return {
-      opacity: highlightSpring,
-      transform: `translateX(${interpolate(highlightSpring, [0, 1], [-30, 0])}px)`,
-      willChange: 'transform, opacity',
-    }
-  }
-
-  // Get style for tech badges with micro-stagger
-  const getTechBadgeStyle = (cardIndex: number, techIndex: number): CSSProperties => {
-    const cardDelay = 15 + cardIndex * 12
-    const techDelay = cardDelay + 25 + techIndex * 3
-
-    const techSpring = spring({
-      frame: Math.max(0, frame - techDelay),
-      fps,
-      config: springConfigs.snappy,
-    })
-
-    return {
-      opacity: techSpring,
-      transform: `scale(${interpolate(techSpring, [0, 1], [0.7, 1])})`,
-      willChange: 'transform, opacity',
-    }
-  }
-
   return (
-    <section id="experience" className="experience" ref={ref as React.RefObject<HTMLElement>}>
+    <section id="experience" className="experience">
       <div className="container">
-        <h2 style={titleStyle}>Experience</h2>
+        <h2 data-aos="fade-up">Experience</h2>
         <div className="experience-grid">
           {experiences.map((exp, cardIndex) => (
-            <article key={exp.id} className="experience-card" style={getCardStyle(cardIndex)}>
+            <article
+              key={exp.id}
+              className="experience-card"
+              data-aos="fade-up"
+              data-aos-delay={150 + (cardIndex * 100)}
+            >
               <h3>{exp.title}</h3>
               <p className="company">{exp.company}</p>
               <p className="period">{exp.period}</p>
               <ul className="highlights">
                 {exp.highlights.map((highlight, idx) => (
-                  <li key={idx} style={getHighlightStyle(cardIndex, idx)}>{highlight}</li>
+                  <li
+                    key={idx}
+                  >
+                    {highlight}
+                  </li>
                 ))}
               </ul>
               <ul className="tech-stack">
                 {exp.tech.map((t, techIdx) => (
-                  <li key={t} style={getTechBadgeStyle(cardIndex, techIdx)}>{t}</li>
+                  <li
+                    key={t}
+                  >
+                    {t}
+                  </li>
                 ))}
               </ul>
             </article>

@@ -80,9 +80,7 @@ src/components/
 ├── Header.tsx       # Navigation header
 ├── Hero.tsx         # Hero section with intro
 ├── Masonry.tsx      # Masonry grid layout
-├── Projects.tsx     # Project cards showcase
-└── animated/
-    └── AnimatedElement.tsx  # Scroll animation wrapper
+└── Projects.tsx     # Project cards showcase
 ```
 
 ### Component Patterns
@@ -267,8 +265,7 @@ When creating new components in Figma:
    ```
 
 3. **Document Prop Patterns**
-   - Pass component props that map to CSS classes or Remotion values
-   - Example: `AnimatedElement` accepts `animation`, `delay`, `duration`
+  - Pass component props that map to CSS classes, content variants, or AOS attributes
 
 ### Design Pattern Rules
 
