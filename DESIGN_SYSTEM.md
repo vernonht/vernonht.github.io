@@ -163,7 +163,6 @@ BEM-inspired naming with section prefixes:
 
 ### Animation Libraries
 
-- **Remotion** (^4.0.434): Keyframe-based animations (`spring`, `interpolate`)
 - **AOS** (^2.3.4): Scroll trigger animations via `data-aos` attributes
 - **Custom Hook**: `useScrollFrame` - Custom scroll-based animation driver
 
@@ -180,8 +179,7 @@ BEM-inspired naming with section prefixes:
 {
   "aos": "^2.3.4",
   "react": "^19.2.4",
-  "react-dom": "^19.2.4",
-  "remotion": "^4.0.434"
+  "react-dom": "^19.2.4"
 }
 ```
 
@@ -377,7 +375,7 @@ Analytics initialization via `src/utils/gtm.ts`:
 - **Image Optimization**: WebP format, lazy loading
 - **CSS Efficiency**: Single CSS file with custom properties
 - **Animation Performance**: GPU-accelerated transforms (`transform`, `opacity`)
-- **Bundle Size**: Minimal dependencies (Remotion + AOS only)
+- **Bundle Size**: Minimal dependencies (AOS for scroll-triggered animations)
 
 ---
 
@@ -398,12 +396,14 @@ Analytics initialization via `src/utils/gtm.ts`:
    - Easier Figma mapping
 2. **Scroll-Driven Animations**: Custom `useScrollFrame` enables:
    - Synchronization with user scroll
-   - Smooth easing with Remotion
-   - Independent from AOS library
+
+- Progress-based in-view behavior
+- Independent from AOS library
 
 3. **Dual Animation Systems**:
-   - `AOS` for simple, declarative animations
-   - `useScrollFrame` + Remotion for complex choreography
+
+- `AOS` for declarative section and element entrance animations
+- `useScrollFrame` for custom scroll-state logic when needed
 
 4. **Theme System**: CSS variables allow:
    - Zero JavaScript overhead

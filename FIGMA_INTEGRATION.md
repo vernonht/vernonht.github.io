@@ -405,7 +405,7 @@ Before finalizing designs in Figma:
 - [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) - Complete token and pattern documentation
 - [config/figma.config.ts](./config/figma.config.ts) - Figma configuration reference
 - [AOS Documentation](https://michalsnik.github.io/aos/)
-- [Remotion Spring Docs](https://www.remotion.dev/docs/animation)
+- [AOS GitHub](https://github.com/michalsnik/aos)
 
 ---
 

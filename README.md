@@ -1,15 +1,15 @@
 # Portfolio Landing Page
 
-A modern, animated portfolio landing page built with React, TypeScript, and Vite. Features scroll-based animations powered by Remotion and a responsive design showcasing professional experience and projects.
+A modern, animated portfolio landing page built with React, TypeScript, and Vite. Features scroll-based animations powered by AOS and a responsive design showcasing professional experience and projects.
 
 ## Features
 
-- **Smooth Scroll Animations** - Scroll-triggered animations using Remotion for engaging visual transitions
+- **Smooth Scroll Animations** - Scroll-triggered animations using AOS (`data-aos`) for engaging visual transitions
 - **Responsive Design** - Fully responsive layout that works across all device sizes
 - **Dynamic Experience Calculation** - Automatically calculates years of experience from a start date
 - **Component-Based Architecture** - Modular React components for easy maintenance and updates
 - **TypeScript Support** - Full type safety across the codebase
-- **Modern Tech Stack** - Built with latest versions of React 18, Vite, and related tools
+- **Modern Tech Stack** - Built with latest versions of React, Vite, and related tools
 
 ## Project Structure
 
@@ -37,10 +37,10 @@ public/
 
 ## Tech Stack
 
-- **React 18.3** - UI framework
+- **React 19.2** - UI framework
 - **TypeScript 5.5** - Type-safe JavaScript
-- **Vite 5.4** - Next-generation frontend toolkit
-- **Remotion 4.0** - Motion graphics library for React
+- **Vite 7.3** - Next-generation frontend toolkit
+- **AOS 2.3** - Animate On Scroll library
 - **CSS3** - Modern styling with animations and transitions
 
 ## Getting Started
@@ -99,7 +99,7 @@ Showcase of notable projects and contributions.
 
 ### Custom Hooks
 
-**`useScrollFrame`** - Provides scroll position awareness for triggering frame-based animations using Remotion's spring physics.
+**`useScrollFrame`** - Provides scroll position awareness for in-view progress-based UI effects.
 
 ### Utilities
 
@@ -116,11 +116,11 @@ Global styles are defined in `src/index.css`. The site features:
 
 ## Animation System
 
-Animations are powered by Remotion's spring physics and interpolation:
+Animations are powered by AOS and CSS transitions:
 
-- Scroll-aware triggers using the `useScrollFrame` hook
-- Staggered animations for lists and grids
-- Smooth spring configurations for natural motion
+- Scroll-aware triggers using `data-aos` attributes
+- Delay-based staggered animations for lists and grids
+- Smooth CSS transform/opacity transitions for natural motion
 
 ## Static Assets
 
