@@ -53,17 +53,20 @@ public/
 ### Installation
 
 1. Clone the repository
+
    ```bash
    git clone <repository-url>
    cd <folder-bane>
    ```
 
 2. Install dependencies
+
    ```bash
    npm install
    ```
 
 3. Start the development server
+
    ```bash
    npm run dev
    ```
@@ -79,15 +82,19 @@ public/
 ## Key Components
 
 ### Hero
+
 The landing section with animated title, subtitle, and call-to-action buttons. Dynamically displays years of experience calculated from May 2017.
 
 ### Masonry
+
 Grid layout showcasing key achievements and expertise areas. Includes skills, metrics, and project highlights with staggered animations.
 
 ### Experience
+
 Timeline view of professional experience and roles.
 
 ### Projects
+
 Showcase of notable projects and contributions.
 
 ### Custom Hooks
@@ -101,6 +108,7 @@ Showcase of notable projects and contributions.
 ## Styling
 
 Global styles are defined in `src/index.css`. The site features:
+
 - Fluid typography
 - Responsive grid layouts
 - CSS animations and transitions
@@ -109,6 +117,7 @@ Global styles are defined in `src/index.css`. The site features:
 ## Animation System
 
 Animations are powered by Remotion's spring physics and interpolation:
+
 - Scroll-aware triggers using the `useScrollFrame` hook
 - Staggered animations for lists and grids
 - Smooth spring configurations for natural motion
@@ -116,6 +125,7 @@ Animations are powered by Remotion's spring physics and interpolation:
 ## Static Assets
 
 Place images in the `public/images/` folder. They'll be served at `/images/<filename>` in your components:
+
 ```tsx
 <img src="/images/profile.jpg" alt="Profile" />
 ```
@@ -127,6 +137,7 @@ npm run build
 ```
 
 This will:
+
 1. Run TypeScript type checking
 2. Bundle and optimize with Vite
 3. Output to the `dist/` folder
@@ -155,6 +166,7 @@ This project is open source and available under the MIT License.
 ## Author
 
 **Jian Hao** - Full Stack Software Engineer
+
 - 8+ years of experience with modern web technologies
 - Expertise in frontend frameworks, backend APIs, and DevOps
 

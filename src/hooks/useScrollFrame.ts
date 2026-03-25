@@ -30,7 +30,7 @@ export function useScrollFrame(options: UseScrollFrameOptions = {}): UseScrollFr
     // Animation starts when element enters viewport and completes after more scrolling
     const elementTop = rect.top
     const startPoint = windowHeight * 0.8 // Start animation when 80% into viewport
-    const endPoint = windowHeight * 0.3   // Complete animation when element is 30% up the viewport
+    const endPoint = windowHeight * 0.3 // Complete animation when element is 30% up the viewport
 
     // Progress goes from 0 to 1 over a longer scroll distance
     const scrollDistance = startPoint - endPoint

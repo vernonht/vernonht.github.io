@@ -12,18 +12,20 @@ function About() {
         <div className="about-content">
           <div className="about-text">
             <p data-aos="fade-right" data-aos-delay="100">
-              I'm a Software Engineer at Morningstar, contributing to portfolio management
-              platforms used by financial professionals. I specialize in building scalable
-              frontend architectures and have experience across the full stack.
+              I'm a Software Engineer at Morningstar, contributing to portfolio management platforms
+              used by financial professionals. I specialize in building scalable frontend
+              architectures and have experience across the full stack.
             </p>
             <p data-aos="fade-right" data-aos-delay="200">
-              With a background in Information System Security from Asia Pacific University,
-              I bring a security-conscious approach to development. I'm passionate about
-              reducing technical debt, optimizing performance, and enabling teams to ship independently.
+              With a background in Information System Security from Asia Pacific University, I bring
+              a security-conscious approach to development. I'm passionate about reducing technical
+              debt, optimizing performance, and enabling teams to ship independently.
             </p>
           </div>
           <div className="skills">
-            <h3 data-aos="fade-up" data-aos-delay="100">Skills</h3>
+            <h3 data-aos="fade-up" data-aos-delay="100">
+              Skills
+            </h3>
             {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
               <div key={category} className="skill-category">
                 <h4 data-aos="fade-up">{category}</h4>

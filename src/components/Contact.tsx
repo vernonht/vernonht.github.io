@@ -38,9 +38,15 @@ function Contact() {
       <div className="container">
         <h2 data-aos="fade-up">Get In Touch</h2>
         <p className="contact-intro" data-aos="fade-up" data-aos-delay="100">
-          I'm currently open to new opportunities. Whether you have a question or just want to say hi, I'll do my best to get back to you!
+          I'm currently open to new opportunities. Whether you have a question or just want to say
+          hi, I'll do my best to get back to you!
         </p>
-        <form className="contact-form" onSubmit={handleSubmit} data-aos="fade-up" data-aos-delay="150">
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+          data-aos="fade-up"
+          data-aos-delay="150"
+        >
           <div className="form-group" data-aos="fade-up" data-aos-delay="180">
             <label htmlFor="name">Name</label>
             <input

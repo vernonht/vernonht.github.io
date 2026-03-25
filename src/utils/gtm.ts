@@ -2,33 +2,46 @@
  * Google Tag Manager initialization and utilities
  */
 
-const GTM_ID = 'G-1W1Y24C3JE';
+type EventParams = Record<string, unknown>
+type GtagCommand = 'js' | 'config' | 'event'
+type GtagFn = (command: GtagCommand, ...params: unknown[]) => void
+
+declare global {
+  interface Window {
+    dataLayer: unknown[][]
+    gtag?: GtagFn
+  }
+}
+
+const GTM_ID = 'G-1W1Y24C3JE'
 
 /**
  * Initialize Google Tag Manager / Google Analytics
  * Loads the gtag script and initializes tracking
  */
 export function initializeGTM(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined') return
 
   // Avoid duplicate initialization
-  if ((window as any).gtag) return;
+  if (window.gtag) return
 
   // Load the gtag script
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = `https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`;
-  document.head.appendChild(script);
+  const script = document.createElement('script')
+  script.async = true
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`
+  document.head.appendChild(script)
 
   // Initialize gtag
-  (window as any).dataLayer = (window as any).dataLayer || [];
-  function gtag(this: any, ...args: any[]) {
-    (window as any).dataLayer.push(args);
-  }
-  gtag('js', new Date());
-  gtag('config', GTM_ID);
+  window.dataLayer = window.dataLayer || []
 
-  (window as any).gtag = gtag;
+  const gtag: GtagFn = (command, ...params) => {
+    window.dataLayer.push([command, ...params])
+  }
+
+  gtag('js', new Date())
+  gtag('config', GTM_ID)
+
+  window.gtag = gtag
 }
 
 /**
@@ -36,10 +49,10 @@ export function initializeGTM(): void {
  * @param eventName - Name of the event
  * @param eventParams - Optional event parameters
  */
-export function trackEvent(eventName: string, eventParams?: Record<string, any>): void {
-  if (typeof window === 'undefined' || !(window as any).gtag) return;
+export function trackEvent(eventName: string, eventParams?: EventParams): void {
+  if (typeof window === 'undefined' || !window.gtag) return
 
-  (window as any).gtag('event', eventName, eventParams || {});
+  window.gtag('event', eventName, eventParams ?? {})
 }
 
 /**
@@ -48,12 +61,12 @@ export function trackEvent(eventName: string, eventParams?: Record<string, any>)
  * @param pageTitle - Title of the page
  */
 export function trackPageView(pagePath: string, pageTitle?: string): void {
-  if (typeof window === 'undefined' || !(window as any).gtag) return;
+  if (typeof window === 'undefined' || !window.gtag) return
 
-  (window as any).gtag('config', GTM_ID, {
+  window.gtag('config', GTM_ID, {
     page_path: pagePath,
     page_title: pageTitle || document.title,
-  });
+  })
 }
 
-export default { initializeGTM, trackEvent, trackPageView };
+export default { initializeGTM, trackEvent, trackPageView }

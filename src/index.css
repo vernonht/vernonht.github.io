@@ -5,7 +5,7 @@
 }
 
 :root,
-[data-theme="light"] {
+[data-theme='light'] {
   --color-primary: #780000;
   --color-primary-dark: #4b0000;
   --color-text: #1f2937;
@@ -15,7 +15,7 @@
   --color-border: #e5e7eb;
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-primary: #c1121f;
   --color-primary-dark: #780000;
   --color-text: #f9fafb;
@@ -34,7 +34,9 @@ body {
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-bg);
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
 .container {
@@ -52,7 +54,9 @@ body {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   z-index: 100;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
   width: 100vw;
 }
 
@@ -120,7 +124,9 @@ body {
   height: 2px;
   background: var(--color-text);
   border-radius: 2px;
-  transition: transform 0.2s, opacity 0.2s;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
 }
 
 .hamburger-line.open:nth-child(1) {
@@ -148,7 +154,9 @@ body {
   text-decoration: none;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  transition: color 0.2s, background 0.2s;
+  transition:
+    color 0.2s,
+    background 0.2s;
 }
 
 .mobile-nav a:hover {
@@ -287,7 +295,9 @@ section h2 {
   border-radius: 0.75rem;
   border: 1px solid var(--color-border);
   overflow: hidden;
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .project-card:hover {
@@ -376,7 +386,9 @@ section h2 {
   padding: 1.5rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-border);
-  transition: background-color 0.3s, border-color 0.3s;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
 }
 
 .experience-card h3 {
@@ -489,12 +501,12 @@ section h2 {
   color: #991b1b;
 }
 
-[data-theme="dark"] .form-status.success {
+[data-theme='dark'] .form-status.success {
   background: #064e3b;
   color: #6ee7b7;
 }
 
-[data-theme="dark"] .form-status.error {
+[data-theme='dark'] .form-status.error {
   background: #7f1d1d;
   color: #fca5a5;
 }
@@ -518,7 +530,9 @@ section h2 {
   color: var(--color-text-light);
   text-decoration: none;
   font-size: 1.5rem;
-  transition: color 0.2s, transform 0.2s;
+  transition:
+    color 0.2s,
+    transform 0.2s;
 }
 
 .social-links a:hover {

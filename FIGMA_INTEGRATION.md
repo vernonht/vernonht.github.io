@@ -7,6 +7,7 @@ This guide explains how to work with Figma designs using the Model Context Proto
 The portfolio landing page is integrated with Figma via Code Connect mappings. This allows for bidirectional synchronization between design decisions in Figma and implementation in React/TypeScript.
 
 ### Related Files
+
 - `DESIGN_SYSTEM.md` - Complete design system documentation
 - `config/figma.config.ts` - Figma MCP configuration and component mappings
 - `index.html` - Contains capture script for Figma HTML import
@@ -16,6 +17,7 @@ The portfolio landing page is integrated with Figma via Code Connect mappings. T
 ## Quick Start
 
 ### 1. View the Figma Design File
+
 🔗 [Portfolio Landing Page in Figma](https://www.figma.com/design/9W4njGh1dj62MaFaEuIOlC)
 
 ### 2. Sync Design Changes to Code
@@ -23,6 +25,7 @@ The portfolio landing page is integrated with Figma via Code Connect mappings. T
 When making design changes in Figma:
 
 1. Update the corresponding CSS variables in `src/index.css`
+
    ```css
    :root {
      --color-primary: #NEW_COLOR;
@@ -31,6 +34,7 @@ When making design changes in Figma:
    ```
 
 2. Update React component props if structure changes:
+
    ```tsx
    const { title, description, imageUrl } = props
    ```
@@ -46,21 +50,23 @@ To add a new component:
    - Document interactions and animations
 
 2. **Implement in React**
+
    ```tsx
    // src/components/NewComponent.tsx
    function NewComponent(props) {
-     return (
-       <section className="new-component">
-         {/* Implementation */}
-       </section>
-     )
+     return <section className="new-component">{/* Implementation */}</section>
    }
    ```
 
 3. **Add CSS Styling**
+
    ```css
-   .new-component { /* styles */ }
-   .new-component:hover { /* hover states */ }
+   .new-component {
+     /* styles */
+   }
+   .new-component:hover {
+     /* hover states */
+   }
    ```
 
 4. **Create Code Connect Link** (manual setup)
@@ -73,20 +79,21 @@ To add a new component:
 ### Color Usage
 
 **Light Theme (Default)**
+
 ```css
---color-primary: #780000      /* Buttons, links, accents */
---color-text: #1f2937         /* Body text */
---color-bg: #ffffff           /* Background */
+--color-primary: #780000 /* Buttons, links, accents */ --color-text: #1f2937 /* Body text */
+  --color-bg: #ffffff /* Background */;
 ```
 
 **Dark Theme**
+
 ```css
---color-primary: #c1121f      /* Brighter for visibility */
---color-text: #f9fafb         /* Off-white */
---color-bg: #111827           /* Dark background */
+--color-primary: #c1121f /* Brighter for visibility */ --color-text: #f9fafb /* Off-white */
+  --color-bg: #111827 /* Dark background */;
 ```
 
 Always use CSS variables instead of hardcoding colors:
+
 ```tsx
 /* ✅ Good */
 <button style={{ background: 'var(--color-primary)' }}>Action</button>
@@ -98,19 +105,19 @@ Always use CSS variables instead of hardcoding colors:
 ### Component Patterns
 
 #### Sections
+
 ```tsx
 function SectionName() {
   return (
     <section className="section-name">
-      <div className="container">
-        {/* content */}
-      </div>
+      <div className="container">{/* content */}</div>
     </section>
   )
 }
 ```
 
 #### Animations
+
 ```tsx
 // Option 1: Scroll-triggered with useScrollFrame
 const { frame, fps, ref } = useScrollFrame({ totalFrames: 120 })
@@ -122,18 +129,25 @@ const { frame, fps, ref } = useScrollFrame({ totalFrames: 120 })
 ### Responsive Design
 
 Mobile-first approach with CSS media queries:
+
 ```css
 /* Mobile default (0-767px) */
-.section { padding: 1rem; }
+.section {
+  padding: 1rem;
+}
 
 /* Tablet and up (768px+) */
 @media (min-width: 768px) {
-  .section { padding: 2rem; }
+  .section {
+    padding: 2rem;
+  }
 }
 
 /* Desktop (1024px+) */
 @media (min-width: 1024px) {
-  .section { padding: 3rem; }
+  .section {
+    padding: 3rem;
+  }
 }
 ```
 
@@ -156,6 +170,7 @@ Code Connect is a Figma feature that links design components to source code, all
    - Add JSDoc comments for documentation
 
 3. **Generate Code Connect**
+
    ```bash
    # Command to add a mapping
    figma-code-connect add \
@@ -175,9 +190,9 @@ Code Connect is a Figma feature that links design components to source code, all
 // In src/components/Header.tsx with JSDoc
 /**
  * @figma-component Header
- * 
+ *
  * Responsive navigation header with theme toggle.
- * 
+ *
  * @prop theme - 'light' | 'dark'
  * @prop sticky - Whether header stays at top when scrolling
  */
@@ -195,10 +210,11 @@ export function Header(props: HeaderProps) {
 1. **Designer updates primary color in Figma** → #c1121f to #d42426
 
 2. **Steps to apply**:
+
    ```css
    /* src/index.css - dark theme section */
-   [data-theme="dark"] {
-     --color-primary: #d42426;  /* Updated */
+   [data-theme='dark'] {
+     --color-primary: #d42426; /* Updated */
    }
    ```
 
@@ -213,27 +229,31 @@ export function Header(props: HeaderProps) {
 1. **Designer creates new section in Figma**
 
 2. **Developer creates React component**:
+
    ```tsx
    // src/components/NewSection.tsx
    function NewSection() {
      const { frame, fps, ref } = useScrollFrame({ totalFrames: 120 })
-     
+
      return (
        <section className="new-section" ref={ref}>
-         <div className="container">
-           {/* Responsive layout */}
-         </div>
+         <div className="container">{/* Responsive layout */}</div>
        </section>
      )
    }
    ```
 
 3. **Add CSS and animations**:
+
    ```css
-   .new-section { /* styling */ }
-   
+   .new-section {
+     /* styling */
+   }
+
    @media (max-width: 768px) {
-     .new-section { /* mobile adjustments */ }
+     .new-section {
+       /* mobile adjustments */
+     }
    }
    ```
 
@@ -259,11 +279,11 @@ export function Header(props: HeaderProps) {
 ```tsx
 function AnimatedComponent() {
   const { frame, fps, ref } = useScrollFrame({ totalFrames: 100 })
-  
+
   const springValue = spring({
     frame,
     fps,
-    config: { damping: 20, stiffness: 50, mass: 1 }
+    config: { damping: 20, stiffness: 50, mass: 1 },
   })
 
   return (
@@ -271,7 +291,7 @@ function AnimatedComponent() {
       ref={ref}
       style={{
         opacity: springValue,
-        transform: `translateY(${interpolate(springValue, [0, 1], [40, 0])}px)`
+        transform: `translateY(${interpolate(springValue, [0, 1], [40, 0])}px)`,
       }}
     >
       Content
@@ -287,11 +307,13 @@ function AnimatedComponent() {
 ### Adding Images
 
 1. **Save to public directory**:
+
    ```
    public/images/external-logo/new-logo.jpg
    ```
 
 2. **Use in components**:
+
    ```tsx
    <img src="/images/external-logo/new-logo.jpg" alt="Logo" />
    ```
@@ -304,6 +326,7 @@ function AnimatedComponent() {
 ### Using Icons
 
 Icons via Font Awesome 6.5.1:
+
 ```tsx
 <i className="fas fa-github"></i>      {/* GitHub icon */}
 <i className="fas fa-linkedin"></i>    {/* LinkedIn icon */}
@@ -332,6 +355,7 @@ Before finalizing designs in Figma:
 ### Issue: Figma capture not working
 
 **Solution**:
+
 1. Ensure `index.html` has the capture script:
    ```html
    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
@@ -342,6 +366,7 @@ Before finalizing designs in Figma:
 ### Issue: Animations not syncing with design
 
 **Solution**:
+
 1. Check `AOS.init()` config in `src/App.tsx`
 2. Verify `data-aos` attributes on elements
 3. Test with `npm run dev` before building
@@ -349,6 +374,7 @@ Before finalizing designs in Figma:
 ### Issue: Color changes not reflecting
 
 **Solution**:
+
 1. Always update CSS variables in `src/index.css`
 2. Check both light and dark theme sections
 3. Clear browser cache if using Firefox/Chrome
@@ -359,12 +385,14 @@ Before finalizing designs in Figma:
 ## Team Collaboration
 
 ### For Designers
+
 - ✅ Create components with clear variants
 - ✅ Document responsive behavior
 - ✅ Use consistent naming with code team
 - ⚠️ Avoid hardcoding colors - reference design tokens
 
 ### For Developers
+
 - ✅ Keep component names aligned with Figma
 - ✅ Update CSS variables when design tokens change
 - ✅ Test all animations on actual devices

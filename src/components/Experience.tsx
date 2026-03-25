@@ -69,27 +69,19 @@ function Experience() {
               key={exp.id}
               className="experience-card"
               data-aos="fade-up"
-              data-aos-delay={150 + (cardIndex * 100)}
+              data-aos-delay={150 + cardIndex * 100}
             >
               <h3>{exp.title}</h3>
               <p className="company">{exp.company}</p>
               <p className="period">{exp.period}</p>
               <ul className="highlights">
                 {exp.highlights.map((highlight, idx) => (
-                  <li
-                    key={idx}
-                  >
-                    {highlight}
-                  </li>
+                  <li key={idx}>{highlight}</li>
                 ))}
               </ul>
               <ul className="tech-stack">
-                {exp.tech.map((t, techIdx) => (
-                  <li
-                    key={t}
-                  >
-                    {t}
-                  </li>
+                {exp.tech.map((t) => (
+                  <li key={t}>{t}</li>
                 ))}
               </ul>
             </article>

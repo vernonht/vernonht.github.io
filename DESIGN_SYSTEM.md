@@ -11,28 +11,31 @@ This document defines design system rules and integration guidelines for syncing
 All colors are defined as CSS custom properties in `src/index.css`:
 
 #### Light Theme
+
 ```css
---color-primary: #780000;        /* Dark red - primary action color */
---color-primary-dark: #4b0000;   /* Darker red - hover states */
---color-text: #1f2937;           /* Dark gray - primary text */
---color-text-light: #6b7280;     /* Medium gray - secondary text */
---color-bg: #ffffff;             /* White - background */
---color-bg-alt: #f9fafb;         /* Light gray - alternate backgrounds */
---color-border: #e5e7eb;         /* Light border color */
+--color-primary: #780000; /* Dark red - primary action color */
+--color-primary-dark: #4b0000; /* Darker red - hover states */
+--color-text: #1f2937; /* Dark gray - primary text */
+--color-text-light: #6b7280; /* Medium gray - secondary text */
+--color-bg: #ffffff; /* White - background */
+--color-bg-alt: #f9fafb; /* Light gray - alternate backgrounds */
+--color-border: #e5e7eb; /* Light border color */
 ```
 
 #### Dark Theme
+
 ```css
---color-primary: #c1121f;        /* Bright red - primary action */
---color-primary-dark: #780000;   /* Dark red - hover states */
---color-text: #f9fafb;           /* Off-white - primary text */
---color-text-light: #9ca3af;     /* Light gray - secondary text */
---color-bg: #111827;             /* Dark background */
---color-bg-alt: #1f2937;         /* Darker gray - alternate backgrounds */
---color-border: #374151;         /* Dark border color */
+--color-primary: #c1121f; /* Bright red - primary action */
+--color-primary-dark: #780000; /* Dark red - hover states */
+--color-text: #f9fafb; /* Off-white - primary text */
+--color-text-light: #9ca3af; /* Light gray - secondary text */
+--color-bg: #111827; /* Dark background */
+--color-bg-alt: #1f2937; /* Darker gray - alternate backgrounds */
+--color-border: #374151; /* Dark border color */
 ```
 
 #### Usage in Figma
+
 - Map all design colors to these CSS variables
 - Use light theme colors as default in Figma mockups
 - Indicate dark theme variants for key components
@@ -41,6 +44,7 @@ All colors are defined as CSS custom properties in `src/index.css`:
 ### Typography
 
 **Font Family**: System stack (Segoe UI, Roboto, Ubuntu fallbacks)
+
 ```css
 font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
 ```
@@ -48,6 +52,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 **Default Line Height**: `1.6`
 
 **Heading Styles** (from CSS):
+
 - `h1`: Default font size from CSS (scales with `.hero h1`)
 - `h2`: Section titles
 - `h3`: Subsection titles
@@ -56,6 +61,7 @@ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubun
 ### Spacing Scale
 
 Spacing follows an 8px base unit (0.5rem):
+
 - `0.25rem` (4px) - Extra small gaps
 - `0.5rem` (8px) - Small gaps
 - `0.75rem` (12px) - Medium gaps
@@ -86,21 +92,23 @@ src/components/
 ### Component Patterns
 
 #### Pattern 1: Page Sections
+
 All major sections follow this structure:
+
 ```tsx
 function SectionName() {
   return (
     <section className="section-name">
-      <div className="container">
-        {/* Content */}
-      </div>
+      <div className="container">{/* Content */}</div>
     </section>
   )
 }
 ```
 
 #### Pattern 2: Animation Integration
+
 Components use the `useScrollFrame` hook for scroll-triggered animations:
+
 ```tsx
 import { useScrollFrame } from '../hooks/useScrollFrame'
 
@@ -109,7 +117,9 @@ const { frame, fps, ref } = useScrollFrame({ totalFrames: 120 })
 ```
 
 #### Pattern 3: CSS Class Naming
+
 BEM-inspired naming with section prefixes:
+
 - `.header`, `.header .logo`, `.header-mobile-controls`
 - `.hero`, `.hero h1`, `.cta-buttons`
 - `.about`, `.skill-categories`
@@ -118,6 +128,7 @@ BEM-inspired naming with section prefixes:
 ### Reusable UI Elements
 
 #### Buttons
+
 ```css
 .btn {
   padding: 0.75rem 1.5rem;
@@ -135,6 +146,7 @@ BEM-inspired naming with section prefixes:
 ```
 
 #### Grid Utils
+
 - `.container`: Max-width 1100px, centered, padding 1.5rem sides
 - Flexbox for layouts throughout
 
@@ -143,23 +155,27 @@ BEM-inspired naming with section prefixes:
 ## 3. Frameworks & Libraries
 
 ### Core Stack
+
 - **Framework**: React 19.2.4
 - **Language**: TypeScript 5.5.3
 - **Build Tool**: Vite 7.3.1
 - **Module**: ESM (type: "module" in package.json)
 
 ### Animation Libraries
+
 - **Remotion** (^4.0.434): Keyframe-based animations (`spring`, `interpolate`)
 - **AOS** (^2.3.4): Scroll trigger animations via `data-aos` attributes
 - **Custom Hook**: `useScrollFrame` - Custom scroll-based animation driver
 
 ### Styling Approach
+
 - **CSS**: Vanilla CSS with custom properties (CSS variables)
 - **Methodology**: BEM-inspired class naming
 - **Philosophy**: No CSS-in-JS, single source of truth in `src/index.css`
 - **Theme**: CSS custom properties for light/dark mode support
 
 ### Relevant Dependencies
+
 ```json
 {
   "aos": "^2.3.4",
@@ -174,6 +190,7 @@ BEM-inspired naming with section prefixes:
 ## 4. Asset Management
 
 ### Image Storage
+
 - **Public images**: `public/images/external-logo/`
 - **Naming convention**: Lowercase, dash-separated (e.g., `oviato.jpg`, `jurifytepro.webp`)
 - **Formats**: JPG, WebP, SVG supported
@@ -183,11 +200,13 @@ BEM-inspired naming with section prefixes:
   ```
 
 ### Asset Optimization
+
 - WebP format preferred for modern browsers
 - Images lazy-loaded in `Projects` section
 - SVG icons from Font Awesome 6.5.1
 
 ### Icon System
+
 - **Icon Library**: Font Awesome 6.5.1 (via CDN in `index.html`)
 - **Usage**: `<i className="fas fa-icon-name"></i>`
 - **Import**: Link to CDNJS in head
@@ -207,15 +226,21 @@ Mobile-first approach with breakpoints defined in `src/index.css`:
 ```
 
 Key breakpoints:
+
 - **768px**: Tablet and header responsive adjustments
 - **1024px**: Full desktop layout
 - **1100px**: Container max-width
 
 ### Responsive Patterns
+
 ```css
 @media (max-width: 768px) {
-  .nav { gap: 1rem; }              /* Reduced gap on mobile */
-  .header-mobile-controls { display: flex; }  /* Show mobile menu */
+  .nav {
+    gap: 1rem;
+  } /* Reduced gap on mobile */
+  .header-mobile-controls {
+    display: flex;
+  } /* Show mobile menu */
 }
 ```
 
@@ -257,6 +282,7 @@ When creating new components in Figma:
    - `ProjectCard` → `src/components/Projects.tsx` (subcomponent)
 
 2. **Create Code Connect Link**
+
    ```javascript
    // Map Figma node to code component
    source: 'src/components/ComponentName.tsx'
@@ -265,7 +291,8 @@ When creating new components in Figma:
    ```
 
 3. **Document Prop Patterns**
-  - Pass component props that map to CSS classes, content variants, or AOS attributes
+
+- Pass component props that map to CSS classes, content variants, or AOS attributes
 
 ### Design Pattern Rules
 
@@ -278,6 +305,7 @@ When creating new components in Figma:
 ### Documentation in Figma
 
 For each component, document:
+
 - Default state
 - Hover/active states
 - Dark theme variant
@@ -291,23 +319,29 @@ For each component, document:
 ### Scroll-Triggered Animations
 
 #### Method 1: useScrollFrame Hook
+
 ```tsx
 const { frame, fps, ref } = useScrollFrame({ totalFrames: 120 })
 const springValue = spring({ frame, fps, config: { damping: 20, stiffness: 50 } })
 ```
 
 **Config options**:
+
 - `smooth`: damping: 20, stiffness: 50, mass: 1
 - `snappy`: damping: 15, stiffness: 100
 
 #### Method 2: AOS (Animate On Scroll)
+
 ```tsx
-<h1 data-aos="fade-up" data-aos-delay="700">Title</h1>
+<h1 data-aos="fade-up" data-aos-delay="700">
+  Title
+</h1>
 ```
 
 **Available animations**: `fade-up`, `fade-in`, `slide-left`, `slide-right`, `zoom`, etc.
 
 **AOS Config** (in `App.tsx`):
+
 ```javascript
 AOS.init({
   duration: 800,
@@ -320,6 +354,7 @@ AOS.init({
 ### Google Tag Manager Integration
 
 Analytics initialization via `src/utils/gtm.ts`:
+
 - GTM ID: `G-1W1Y24C3JE`
 - Track custom events: `trackEvent(eventName, params)`
 - Track page views: `trackPageView(path, title)`
@@ -361,13 +396,12 @@ Analytics initialization via `src/utils/gtm.ts`:
    - Simpler maintenance
    - Better performance
    - Easier Figma mapping
-   
 2. **Scroll-Driven Animations**: Custom `useScrollFrame` enables:
    - Synchronization with user scroll
    - Smooth easing with Remotion
    - Independent from AOS library
 
-3. **Dual Animation Systems**: 
+3. **Dual Animation Systems**:
    - `AOS` for simple, declarative animations
    - `useScrollFrame` + Remotion for complex choreography
 

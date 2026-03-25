@@ -19,7 +19,8 @@ const projects: Project[] = [
   {
     id: 2,
     title: 'JurifytePro',
-    description: 'CMS platform that empowers firm legal service / conveyancing operations, business expansion, management & internal controls.',
+    description:
+      'CMS platform that empowers firm legal service / conveyancing operations, business expansion, management & internal controls.',
     imageUrl: '/images/external-logo/jurifytepro.webp',
     link: 'https://jurifytepro.com/',
     tech: ['Next.js', 'Context API', 'MongoDB', 'TailwindCSS', 'Antd'],
@@ -27,7 +28,8 @@ const projects: Project[] = [
   {
     id: 3,
     title: 'Cerah Future',
-    description: 'CMS platform that digitalizes higher education service, tracks student records, and automates the admission process.',
+    description:
+      'CMS platform that digitalizes higher education service, tracks student records, and automates the admission process.',
     imageUrl: '/images/external-logo/Cerah-Future.jpg',
     // link: 'https://cerahfuture.com',
     tech: ['Laravel 8+', 'Vue', 'MySQL', 'Inertia.js'],
@@ -35,7 +37,8 @@ const projects: Project[] = [
   {
     id: 4,
     title: 'Agridata',
-    description: 'Platform that helps farmers manage their agricultural operations, monitor crops, and build credit scores to get loans.',
+    description:
+      'Platform that helps farmers manage their agricultural operations, monitor crops, and build credit scores to get loans.',
     imageUrl: '/images/external-logo/Agridata.svg',
     tech: ['NestJs', 'PostgreSQL'],
   },
@@ -52,7 +55,7 @@ function Projects() {
               key={project.id}
               className="project-card"
               data-aos="fade-up"
-              data-aos-delay={150 + (cardIndex * 100)}
+              data-aos-delay={150 + cardIndex * 100}
             >
               {project.imageUrl && (
                 <div className="project-image">
@@ -63,12 +66,8 @@ function Projects() {
                 <h3>{project.title}</h3>
                 <p className="project-description">{project.description}</p>
                 <ul className="tech-stack">
-                  {project.tech.map((t, techIdx) => (
-                    <li
-                      key={t}
-                    >
-                      {t}
-                    </li>
+                  {project.tech.map((t) => (
+                    <li key={t}>{t}</li>
                   ))}
                 </ul>
                 {project.link && (

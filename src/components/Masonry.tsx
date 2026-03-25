@@ -80,8 +80,7 @@ const getMasonryItems = (): MasonryItem[] => [
   {
     id: 9,
     title: 'Full Stack Versatility',
-    content:
-      `${calculateYearsOfExperience(2017, 5)}+ years spanning frontend frameworks, backend APIs, and DevOps tooling. Comfortable across the entire stack from UI to deployment pipelines.`,
+    content: `${calculateYearsOfExperience(2017, 5)}+ years spanning frontend frameworks, backend APIs, and DevOps tooling. Comfortable across the entire stack from UI to deployment pipelines.`,
     variant: 'default',
     tags: ['Vue', 'Nuxt', 'Next', 'Laravel', 'Express', 'NestJS'],
   },
@@ -138,7 +137,13 @@ function Masonry() {
               {item.tags && (
                 <ul className="masonry-tags">
                   {item.tags.map((tag, tagIndex) => (
-                    <li key={tag} data-aos="zoom-in" data-aos-delay={220 + index * 60 + tagIndex * 35}>{tag}</li>
+                    <li
+                      key={tag}
+                      data-aos="zoom-in"
+                      data-aos-delay={220 + index * 60 + tagIndex * 35}
+                    >
+                      {tag}
+                    </li>
                   ))}
                 </ul>
               )}

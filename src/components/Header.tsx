@@ -26,7 +26,9 @@ function Header() {
   return (
     <header className="header">
       <div className="container">
-        <a href="#" className="logo">Jian Hao</a>
+        <a href="#" className="logo">
+          Jian Hao
+        </a>
         <nav className="nav">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
@@ -62,10 +64,18 @@ function Header() {
       </div>
       {menuOpen && (
         <nav className="mobile-nav">
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#projects" onClick={closeMenu}>Projects</a>
-          <a href="#experience" onClick={closeMenu}>Experience</a>
-          <a href="#contact" onClick={closeMenu}>Contact</a>
+          <a href="#about" onClick={closeMenu}>
+            About
+          </a>
+          <a href="#projects" onClick={closeMenu}>
+            Projects
+          </a>
+          <a href="#experience" onClick={closeMenu}>
+            Experience
+          </a>
+          <a href="#contact" onClick={closeMenu}>
+            Contact
+          </a>
         </nav>
       )}
     </header>
