@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { calculateYearsOfExperience } from '../utils/helpers'
+import TriangleCanvas from './animated/TriangleCanvas'
 
 function Hero() {
   // Calculate years of experience from May 2017
@@ -7,6 +8,7 @@ function Hero() {
 
   return (
     <section className="hero">
+      <TriangleCanvas />
       <div className="container">
         <h1 data-aos="fade-up" data-aos-delay="700">
           Hi, I'm <span className="highlight">Jian Hao</span>
