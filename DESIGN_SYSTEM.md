@@ -353,7 +353,7 @@ AOS.init({
 
 Analytics initialization via `src/utils/gtm.ts`:
 
-- GTM ID: `G-1W1Y24C3JE`
+- GTM ID: `GTM-TMQSN4J9`
 - Track custom events: `trackEvent(eventName, params)`
 - Track page views: `trackPageView(path, title)`
 

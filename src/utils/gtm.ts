@@ -13,7 +13,7 @@ declare global {
   }
 }
 
-const GTM_ID = 'G-1W1Y24C3JE'
+const GTM_ID = 'GTM-TMQSN4J9'
 
 /**
  * Initialize Google Tag Manager / Google Analytics
