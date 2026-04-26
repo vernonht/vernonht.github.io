@@ -1,45 +1,26 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
+import ReactGAFunctions from 'react-ga4'
+// @ts-expect-error react-ga4 may expose default export depending on module interop mode
+const ReactGA = ReactGAFunctions.default || ReactGAFunctions
 
-type GtagCommand = 'js' | 'config' | 'event'
-type GtagFn = (command: GtagCommand, ...params: unknown[]) => void
 const GA_MEASUREMENT_ID = 'G-1W1Y24C3JE'
 
-declare global {
-  interface Window {
-    dataLayer: unknown[][]
-    gtag?: GtagFn
-  }
-}
-
 function GoogleAnalytics() {
+  const initialized = useRef(false)
+
   useEffect(() => {
+    if (initialized.current) return
+    initialized.current = true
+
     const measurementId = GA_MEASUREMENT_ID
     if (typeof window === 'undefined' || !measurementId) return
 
-    if (!window.dataLayer) {
-      window.dataLayer = []
-    }
-
-    const gtag: GtagFn = (command, ...params) => {
-      window.dataLayer.push([command, ...params])
-    }
-
-    window.gtag = window.gtag || gtag
-
-    const existingScript = document.querySelector<HTMLScriptElement>(
-      `script[data-ga-id="${measurementId}"]`
-    )
-
-    if (!existingScript) {
-      const script = document.createElement('script')
-      script.async = true
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`
-      script.dataset.gaId = measurementId
-      document.head.appendChild(script)
-    }
-
-    window.gtag('js', new Date())
-    window.gtag('config', measurementId)
+    ReactGA.initialize(GA_MEASUREMENT_ID)
+    ReactGA.send({
+      hitType: 'pageview',
+      page: `${window.location.pathname}${window.location.search}`,
+      title: document.title,
+    })
   }, [])
 
   return null
