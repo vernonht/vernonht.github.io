@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import AOS from 'aos'
-import { initializeGTM } from './utils/gtm'
+import GoogleAnalytics from './components/GoogleAnalytics'
 
 // import aos styles
 import 'aos/dist/aos.css'
@@ -32,12 +32,9 @@ function App() {
     })
   }, [])
 
-  useEffect(() => {
-    initializeGTM()
-  }, [])
-
   return (
     <div className="app">
+      <GoogleAnalytics />
       <Header />
       <main>
         <Hero />

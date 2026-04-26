@@ -253,12 +253,12 @@ portfolio-landing-page/
 ├── src/
 │   ├── components/               # React components
 │   │   ├── animated/             # Animation wrapper
+│   │   ├── GoogleAnalytics.tsx   # Google Analytics initialization
 │   │   └── [section-components]
 │   ├── hooks/
-│   │   └── useScrollFrame.ts      # Scroll animation hook
+│   │   └── useScrollFrame.ts     # Scroll animation hook
 │   ├── utils/
-│   │   ├── helpers.ts            # Utility functions
-│   │   └── gtm.ts                # Google Tag Manager
+│   │   └── helpers.ts            # Utility functions
 │   ├── App.tsx                   # Root component
 │   ├── index.css                 # Global styles
 │   └── main.tsx                  # Entry point
@@ -349,13 +349,12 @@ AOS.init({
 })
 ```
 
-### Google Tag Manager Integration
+### Google Analytics Integration
 
-Analytics initialization via `src/utils/gtm.ts`:
+Analytics is initialized via `src/components/GoogleAnalytics.tsx` and mounted in `App.tsx`.
 
-- GTM ID: `GTM-TMQSN4J9`
-- Track custom events: `trackEvent(eventName, params)`
-- Track page views: `trackPageView(path, title)`
+- Measurement ID is defined inside the component
+- gtag script is loaded once and configured on app mount
 
 ---
 
