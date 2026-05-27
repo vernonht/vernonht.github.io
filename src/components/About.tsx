@@ -1,4 +1,11 @@
+import useSectionAnalytics from '../hooks/useSectionAnalytics'
+
 function About() {
+  useSectionAnalytics({
+    sectionName: 'About',
+    sectionId: 'about',
+  })
+
   const skillCategories = {
     Frontend: ['NuxtJs', 'VueJs', 'NextJs (React)', 'MiniApp (Alipay/TnGD)'],
     Backend: ['ExpressJs', 'NestJs', 'Laravel'],

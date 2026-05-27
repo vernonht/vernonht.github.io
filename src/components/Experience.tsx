@@ -1,3 +1,5 @@
+import useSectionAnalytics from '../hooks/useSectionAnalytics'
+
 interface ExperienceItem {
   id: number
   title: string
@@ -59,6 +61,11 @@ const experiences: ExperienceItem[] = [
 ]
 
 function Experience() {
+  useSectionAnalytics({
+    sectionName: 'Experience',
+    sectionId: 'experience',
+  })
+
   return (
     <section id="experience" className="experience">
       <div className="container">

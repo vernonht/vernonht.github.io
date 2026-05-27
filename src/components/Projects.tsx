@@ -1,3 +1,5 @@
+import useSectionAnalytics from '../hooks/useSectionAnalytics'
+
 interface Project {
   id: number
   title: string
@@ -45,6 +47,11 @@ const projects: Project[] = [
 ]
 
 function Projects() {
+  useSectionAnalytics({
+    sectionName: 'Projects',
+    sectionId: 'projects',
+  })
+
   return (
     <section id="projects" className="projects-section">
       <div className="container">

@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { calculateYearsOfExperience } from '../utils/helpers'
+import useSectionAnalytics from '../hooks/useSectionAnalytics'
 
 type CardVariant = 'accent' | 'outline' | 'filled' | 'default'
 
@@ -110,6 +111,10 @@ const getMasonryItems = (): MasonryItem[] => [
 
 function Masonry() {
   const masonryItems = useMemo(() => getMasonryItems(), [])
+  useSectionAnalytics({
+    sectionName: 'Masonry',
+    sectionId: 'highlights',
+  })
 
   return (
     <section id="highlights" className="masonry-section">

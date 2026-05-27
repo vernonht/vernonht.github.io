@@ -1,8 +1,14 @@
+import useSectionAnalytics from '../hooks/useSectionAnalytics'
+
 function Footer() {
   const currentYear = new Date().getFullYear()
+  useSectionAnalytics({
+    sectionName: 'Contact/Footer',
+    sectionId: 'footer',
+  })
 
   return (
-    <footer className="footer">
+    <footer id="footer" className="footer">
       <div className="container">
         <div className="social-links">
           <a
