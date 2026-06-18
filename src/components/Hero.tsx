@@ -23,16 +23,12 @@ function Hero() {
         </p>
         <p className="description" data-aos="fade-up" data-aos-delay="1100">
           Full stack developer with {yearsOfExperience}+ years of experience building scalable web
-          applications, from micro-frontend architectures to MiniApp ecosystems.
+          applications, from micro-frontend systems to production-grade backend infrastructure and
+          CI/CD optimization.
         </p>
         <div className="cta-buttons">
-          <a
-            href="#experience"
-            className="btn btn-primary"
-            data-aos="fade-up"
-            data-aos-delay="1300"
-          >
-            View Experience
+          <a href="#about" className="btn btn-primary" data-aos="fade-up" data-aos-delay="1300">
+            My Experience
           </a>
           {/* <a href="#contact" className="btn btn-secondary" data-aos="fade-up" data-aos-delay="1500">Get In Touch</a> */}
         </div>

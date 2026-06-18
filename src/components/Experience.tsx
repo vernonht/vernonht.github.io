@@ -32,7 +32,7 @@ const experiences: ExperienceItem[] = [
       'Refactored API service layers, cutting API requests by 70% and traffic by 50%',
       'Actively reduced technical debt through code reviews and refactoring initiatives',
     ],
-    tech: ['NuxtJs', 'VueJs', 'Storyblok'],
+    tech: ['NuxtJs', 'VueJs', 'Storyblok', 'GraphQL'],
   },
   {
     id: 3,

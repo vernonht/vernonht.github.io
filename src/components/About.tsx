@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import useSectionAnalytics from '../hooks/useSectionAnalytics'
+import { calculateYearsOfExperience } from '../utils/helpers'
 
 function About() {
   useSectionAnalytics({
@@ -6,10 +8,23 @@ function About() {
     sectionId: 'about',
   })
 
+  const [yearsOfExperience] = useState(() => calculateYearsOfExperience(2017, 5))
+
   const skillCategories = {
-    Frontend: ['NuxtJs', 'VueJs', 'NextJs (React)', 'MiniApp (Alipay/TnGD)'],
-    Backend: ['ExpressJs', 'NestJs', 'Laravel'],
-    Others: ['MongoDB', 'Redis', 'Harness', 'Cypress', 'Playwright', 'Storybook'],
+    Frontend: [
+      'Vue.js',
+      'Nuxt.js',
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Storybook',
+      'Webpack Module Federation (Micro Frontend)',
+    ],
+    Backend: ['Node.js (NestJS, ExpressJS)', 'Laravel', 'REST APIs', 'GraphQL'],
+    'CI/CD': ['Harness', 'GitHub Actions', 'AWS Amplify', 'GCP cloudbuild'],
+    'Data & Storage': ['PostgresDB', 'MongoDB', 'Redis', 'MySQL'],
+    Testing: ['Playwright', 'Cypress', 'E2E Testing', 'Test Automation'],
+    'CMS & Platform Engineering': ['Storyblok', 'Localization Platforms'],
   }
 
   return (
@@ -19,14 +34,24 @@ function About() {
         <div className="about-content">
           <div className="about-text">
             <p data-aos="fade-right" data-aos-delay="100">
-              I'm a Software Engineer at Morningstar, contributing to portfolio management platforms
-              used by financial professionals. I specialize in building scalable frontend
-              architectures and have experience across the full stack.
+              Senior Software Engineer with {yearsOfExperience}+ years of experience building
+              scalable web applications, internal platforms, and developer tooling across fintech,
+              mobility, and digital media industries.
             </p>
             <p data-aos="fade-right" data-aos-delay="200">
-              With a background in Information System Security from Asia Pacific University, I bring
-              a security-conscious approach to development. I'm passionate about reducing technical
-              debt, optimizing performance, and enabling teams to ship independently.
+              Specialized in Vue.js, Nuxt.js, and modern frontend architecture, with hands-on
+              experience spanning full-stack development, micro-frontend systems, CMS platforms, and
+              performance optimization.
+            </p>
+            <p data-aos="fade-right" data-aos-delay="300">
+              Experienced in designing and delivering customer-facing applications using React and
+              Next.js, alongside building scalable solutions with Vue.js and Nuxt.js across
+              enterprise and startup environments.{' '}
+            </p>
+            <p data-aos="fade-right" data-aos-delay="400">
+              Proven track record of reducing operational costs, improving engineering productivity,
+              leading large-scale migrations, and enabling cross-functional teams to ship faster
+              through scalable platform solutions.
             </p>
           </div>
           <div className="skills">
