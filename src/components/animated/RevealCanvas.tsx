@@ -1,7 +1,7 @@
 import { useEffect, useRef, type RefObject } from 'react'
 
 type RevealCanvasProps = {
-  containerRef: RefObject<HTMLElement> | null
+  containerRef: RefObject<HTMLElement | null>
 }
 
 function RevealCanvas({ containerRef }: RevealCanvasProps) {
