@@ -176,7 +176,7 @@ body {
 
 .hero .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .triangle-canvas {
@@ -186,6 +186,15 @@ body {
   height: 100%;
   pointer-events: none;
   z-index: 0;
+}
+
+.reveal-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero h1 {
@@ -828,5 +837,9 @@ section h2 {
 
   .cta-buttons {
     flex-direction: column;
+  }
+
+  .reveal-canvas {
+    display: none;
   }
 }
