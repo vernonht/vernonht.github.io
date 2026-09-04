@@ -81,7 +81,7 @@ function About() {
                 Skills
               </h3>
               <button className="btn btn-secondary btn-secondary--small" onClick={handleShowSkillMap}>
-                {showSkillMap ? 'Show Skill Map' : 'Show Skill List'}
+                {showSkillMap ? 'Show Skill List' : 'Show Skill Map'}
               </button>
             </div>
             {!showSkillMap && Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
