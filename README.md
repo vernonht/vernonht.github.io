@@ -7,6 +7,7 @@ A modern, animated portfolio landing page built with React, TypeScript, and Vite
 - **Smooth Scroll Animations** - Scroll-triggered animations using AOS (`data-aos`) for engaging visual transitions
 - **Responsive Design** - Fully responsive layout that works across all device sizes
 - **Dynamic Experience Calculation** - Automatically calculates years of experience from a start date
+- **Interactive Skill Mindmap** - Skills visualized as an interactive mindmap (markmap.js.org) generated from the `skillCategories` data, with drag/zoom/collapse controls
 - **Component-Based Architecture** - Modular React components for easy maintenance and updates
 - **TypeScript Support** - Full type safety across the codebase
 - **Modern Tech Stack** - Built with latest versions of React, Vite, and related tools
@@ -17,6 +18,7 @@ A modern, animated portfolio landing page built with React, TypeScript, and Vite
 src/
 ├── components/
 │   ├── About.tsx                   # About section
+│   ├── Mindmap.tsx                 # Interactive skill mindmap (markmap.js.org)
 │   ├── Contact.tsx                 # Contact section
 │   ├── Experience.tsx              # Experience/timeline section
 │   ├── Footer.tsx                  # Footer
@@ -41,6 +43,7 @@ public/
 - **TypeScript 5.5** - Type-safe JavaScript
 - **Vite 7.3** - Next-generation frontend toolkit
 - **AOS 2.3** - Animate On Scroll library
+- **markmap 0.18** - `markmap-lib` / `markmap-view` for the interactive skill mindmap
 - **CSS3** - Modern styling with animations and transitions
 
 ## Getting Started
@@ -84,6 +87,10 @@ public/
 ### Hero
 
 The landing section with animated title, subtitle, and call-to-action buttons. Dynamically displays years of experience calculated from May 2017.
+
+### About
+
+Bio section whose skills are visualized twice: categorized chip lists plus a full-width interactive mindmap (powered by [markmap](https://markmap.js.org/)) in a "Skill Map" band below. The mindmap markdown is generated from the single `skillCategories` source of truth in `About.tsx`, so categories and skills stay in sync automatically. It supports drag-to-pan, scroll-to-zoom, and click-to-collapse, and follows the site's light/dark theme via CSS custom properties. The heavy `markmap`/d3 dependencies are code-split and lazy-loaded so they don't bloat the initial bundle.
 
 ### Masonry
 

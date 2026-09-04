@@ -1,6 +1,26 @@
-import { useState } from 'react'
+import { lazy, Suspense, useMemo, useState } from 'react'
 import useSectionAnalytics from '../hooks/useSectionAnalytics'
 import { calculateYearsOfExperience } from '../utils/helpers'
+
+// markmap/d3 are heavy — code-split them out of the main bundle
+const Mindmap = lazy(() => import('./Mindmap'))
+
+const skillCategories = {
+  Frontend: [
+    'Vue.js',
+    'Nuxt.js',
+    'React',
+    'Next.js',
+    'TypeScript',
+    'Storybook',
+    'Webpack Module Federation (Micro Frontend)',
+  ],
+  Backend: ['Node.js (NestJS, ExpressJS)', 'Laravel', 'REST APIs', 'GraphQL'],
+  'CI/CD': ['Harness', 'GitHub Actions', 'AWS Amplify', 'GCP cloudbuild'],
+  'Data & Storage': ['PostgresDB', 'MongoDB', 'Redis', 'MySQL'],
+  Testing: ['Playwright', 'Cypress', 'E2E Testing', 'Test Automation'],
+  'CMS & Platform Engineering': ['Storyblok', 'Localization Platforms'],
+}
 
 function About() {
   useSectionAnalytics({
@@ -9,22 +29,23 @@ function About() {
   })
 
   const [yearsOfExperience] = useState(() => calculateYearsOfExperience(2017, 5))
+  const [showSkillMap, setShowSkillMap] = useState(false)
 
-  const skillCategories = {
-    Frontend: [
-      'Vue.js',
-      'Nuxt.js',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Storybook',
-      'Webpack Module Federation (Micro Frontend)',
-    ],
-    Backend: ['Node.js (NestJS, ExpressJS)', 'Laravel', 'REST APIs', 'GraphQL'],
-    'CI/CD': ['Harness', 'GitHub Actions', 'AWS Amplify', 'GCP cloudbuild'],
-    'Data & Storage': ['PostgresDB', 'MongoDB', 'Redis', 'MySQL'],
-    Testing: ['Playwright', 'Cypress', 'E2E Testing', 'Test Automation'],
-    'CMS & Platform Engineering': ['Storyblok', 'Localization Platforms'],
+  // Single source of truth: the mindmap is generated from skillCategories above
+  const skillMapMarkdown = useMemo(
+    () =>
+      [
+        '# Skills',
+        ...Object.entries(skillCategories).flatMap(([category, skills]) => [
+          `## ${category}`,
+          ...skills.map((skill) => `- ${skill}`),
+        ]),
+      ].join('\n'),
+    [],
+  )
+
+  const handleShowSkillMap = () => {
+    setShowSkillMap(prev => !prev)
   }
 
   return (
@@ -55,10 +76,15 @@ function About() {
             </p>
           </div>
           <div className="skills">
-            <h3 data-aos="fade-up" data-aos-delay="100">
-              Skills
-            </h3>
-            {Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
+            <div className="skills-header">
+              <h3 data-aos="fade-up" data-aos-delay="100">
+                Skills
+              </h3>
+              <button className="btn btn-secondary btn-secondary--small" onClick={handleShowSkillMap}>
+                {showSkillMap ? 'Show Skill Map' : 'Show Skill List'}
+              </button>
+            </div>
+            {!showSkillMap && Object.entries(skillCategories).map(([category, skills], categoryIndex) => (
               <div key={category} className="skill-category">
                 <h4 data-aos="fade-up">{category}</h4>
                 <ul className="skills-list">
@@ -74,6 +100,26 @@ function About() {
                 </ul>
               </div>
             ))}
+            {showSkillMap && 
+              <div id="skill-mindmap" className="skill-mindmap-band">
+                <h3 className="skill-mindmap-title" data-aos="fade-up">
+                  Skill Map
+                </h3>
+                <p className="skill-mindmap-hint" data-aos="fade-up" data-aos-delay="50">
+                  Interactive mindmap — drag to pan, scroll to zoom, click a node to collapse or expand a
+                  branch.
+                </p>
+                <Suspense
+                  fallback={
+                    <div className="skill-mindmap skill-mindmap--loading">
+                      Loading skill map…
+                    </div>
+                  }
+                >
+                  <Mindmap markdown={skillMapMarkdown} />
+                </Suspense>
+              </div>
+            }
           </div>
         </div>
       </div>
