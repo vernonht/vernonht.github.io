@@ -127,31 +127,32 @@ function Masonry() {
           {masonryItems.map((item, index) => (
             <article
               key={item.id}
-              className={`masonry-card masonry-card--${item.variant}`}
               data-aos="fade-up"
               data-aos-delay={160 + index * 60}
             >
-              {item.metric && (
-                <div className="masonry-metric">
-                  <span className="masonry-metric-value">{item.metric}</span>
-                  <span className="masonry-metric-label">{item.metricLabel}</span>
-                </div>
-              )}
-              <h3>{item.title}</h3>
-              <p>{item.content}</p>
-              {item.tags && (
-                <ul className="masonry-tags">
-                  {item.tags.map((tag, tagIndex) => (
-                    <li
-                      key={tag}
-                      data-aos="zoom-in"
-                      data-aos-delay={220 + index * 60 + tagIndex * 35}
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              )}
+              <div className={`masonry-card masonry-card--${item.variant}`}>
+                {item.metric && (
+                  <div className="masonry-metric">
+                    <span className="masonry-metric-value">{item.metric}</span>
+                    <span className="masonry-metric-label">{item.metricLabel}</span>
+                  </div>
+                )}
+                <h3>{item.title}</h3>
+                <p>{item.content}</p>
+                {item.tags && (
+                  <ul className="masonry-tags">
+                    {item.tags.map((tag, tagIndex) => (
+                      <li
+                        key={tag}
+                        data-aos="zoom-in"
+                        data-aos-delay={220 + index * 60 + tagIndex * 35}
+                      >
+                        {tag}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </article>
           ))}
         </div>

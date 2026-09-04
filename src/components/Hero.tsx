@@ -29,8 +29,8 @@ function Hero() {
           applications, from micro-frontend systems to production-grade backend infrastructure and
           CI/CD optimization.
         </p>
-        <div className="cta-buttons">
-          <a href="#about" className="btn btn-primary" data-aos="fade-up" data-aos-delay="1300">
+        <div className="cta-buttons" data-aos="fade-up" data-aos-delay="1300">
+          <a href="#about" className="btn btn-primary">
             My Experience
           </a>
           {/* <a href="#contact" className="btn btn-secondary" data-aos="fade-up" data-aos-delay="1500">Get In Touch</a> */}
